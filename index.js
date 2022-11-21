@@ -27,6 +27,7 @@ setTimeout(() => {
 }, 500);
 setTimeout(() => {
     body.classList.remove('overflow-hidden');
+    introScreen.style.display = 'none';
 }, 1500);
 
 // FADE IN LOADING EFFECT ------------------------------------------------------------------------------------
