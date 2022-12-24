@@ -12,6 +12,9 @@ const navMobileHamburgerTop = document.getElementById('nav-mobile-hamburger-top'
 const navMobileHamburgerBottom = document.getElementById('nav-mobile-hamburger-bottom');
 const navMobileCloseItems = document.querySelectorAll(`[data-nav="true"]`);
 
+const contactForm = document.getElementById('form');
+const contactSuccessMessage = document.getElementById('contact-success-message');
+
 const fadeUpArr = document.querySelectorAll('.fade-up');
 const fadeLeftArr = document.querySelectorAll('.fade-left');
 const fadeRightArr = document.querySelectorAll('.fade-right');
@@ -123,3 +126,44 @@ function mobileNavCloseHandler() {
         navMobileLinksContainer.classList.add('nav-mobile-links-open');
     }
 }
+
+//  Contact form send to server and respond with success or error
+contactForm.addEventListener('submit', (e) => {
+    e.preventDefault(); // Prevent the form from being submitted
+
+    // Get the form data
+    const formData = new FormData(contactForm);
+
+    // Send the form data to the server using an XMLHttpRequest
+    const xhr = new XMLHttpRequest();
+    xhr.open('POST', 'sendmail.php');
+    xhr.onload = function () {
+        if (xhr.getResponseHeader('X-Contact-Form-Status') === 'success') {
+            // Display a success message
+            contactSuccessMessage.innerHTML =
+                '<span>&#10003;</span> Thank you! Your message has been sent';
+            contactSuccessMessage.classList = 'contact-success-message-show';
+            setTimeout(() => {
+                contactSuccessMessage.classList = 'contact-success-message-hide';
+            }, 2000);
+            document.getElementById('contact-name').value = '';
+            document.getElementById('contact-phone').value = '';
+            document.getElementById('contact-email').value = '';
+            document.getElementById('contact-age-under25').value = '';
+            document.getElementById('contact-age-25-55').value = '';
+            document.getElementById('contact-age-over55').value = '';
+            document.getElementById('contact-smoker-yes').value = '';
+            document.getElementById('contact-smoker-no').value = '';
+            document.getElementById('contact-subject').value = '';
+            document.getElementById('contact-message').value = '';
+        } else {
+            contactSuccessMessage.innerHTML =
+                '<span>&#9447;</span> Sorry there was an error, please try again later';
+            contactSuccessMessage.classList = 'contact-success-message-show';
+            setTimeout(() => {
+                contactSuccessMessage.classList = 'contact-success-message-hide';
+            }, 2000);
+        }
+    };
+    xhr.send(formData);
+});

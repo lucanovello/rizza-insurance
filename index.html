@@ -307,47 +307,94 @@
                 <p class="contact-subtitle section-subtitle">Contact us for a free quote today.</p>
             </div>
 
-            <form class="form-container fade-up fade-up-transition" action="#home">
+            <form
+                class="form-container fade-up fade-up-transition"
+                action="/sendmail.php"
+                method="post"
+                id="form"
+            >
                 <div class="form-line">
                     <div class="form-input-wrapper form-wrap">
                         <label class="form-label form-required form" for="name">Name</label>
-                        <input class="form-input" type="text" required />
+                        <input
+                            class="form-input"
+                            type="text"
+                            id="contact-name"
+                            name="name"
+                            required
+                        />
                     </div>
 
                     <div class="form-input-wrapper form-wrap">
                         <label class="form-label" for="phone">Phone</label>
-                        <input class="form-input" type="tel" />
+                        <input class="form-input" type="tel" id="contact-phone" name="phone" />
                     </div>
                 </div>
 
                 <div class="form-input-wrapper">
                     <label class="form-label form-required" for="email">Email</label>
-                    <input class="form-input" type="email" required />
+                    <input
+                        class="form-input"
+                        type="email"
+                        id="contact-email"
+                        name="email"
+                        required
+                    />
                 </div>
                 <div class="form-line-2">
                     <div class="form-input-wrapper form-wrap">
                         <label class="form-label" for="age">Age</label>
                         <div>
-                            <input class="form-radio" type="radio" id="under25" name="age" />
+                            <input
+                                class="form-radio"
+                                type="radio"
+                                id="contact-age-under25"
+                                name="age"
+                                value="Under 25"
+                            />
                             <label class="form-radio-label" for="under25">Under 25</label>
                         </div>
                         <div>
-                            <input class="form-radio" type="radio" id="25-55" name="age" />
+                            <input
+                                class="form-radio"
+                                type="radio"
+                                id="contact-age-25-55"
+                                name="age"
+                                value="25 - 55"
+                            />
                             <label class="form-radio-label" for="25-55">25 - 55</label>
                         </div>
                         <div>
-                            <input class="form-radio" type="radio" id="over55" name="age" />
+                            <input
+                                class="form-radio"
+                                type="radio"
+                                id="contact-age-over55"
+                                name="age"
+                                value="Over 55"
+                            />
                             <label class="form-radio-label" for="over55">Over 55</label>
                         </div>
                     </div>
                     <div class="form-input-wrapper form-wrap form-smoker">
                         <label class="form-label" for="smoker">Are you a smoker?</label>
                         <div class="rtl">
-                            <input class="form-radio" type="radio" id="yes" name="smoker" />
+                            <input
+                                class="form-radio"
+                                type="radio"
+                                id="contact-smoker-yes"
+                                name="smoker"
+                                value="yes"
+                            />
                             <label class="form-radio-label" for="yes">Yes</label>
                         </div>
                         <div class="rtl">
-                            <input class="form-radio" type="radio" id="no" name="smoker" />
+                            <input
+                                class="form-radio"
+                                type="radio"
+                                id="contact-smoker-no"
+                                name="smoker"
+                                value="no"
+                            />
                             <label class="form-radio-label" for="no">No</label>
                         </div>
                     </div>
@@ -355,14 +402,17 @@
 
                 <div class="form-input-wrapper">
                     <label class="form-label" for="subject">Subject</label>
-                    <input class="form-input" type="text" />
+                    <input class="form-input" type="text" id="contact-subject" name="subject" />
                 </div>
                 <div class="form-input-wrapper">
                     <label class="form-label" for="message">Message</label>
-                    <textarea class="form-message" name="message"></textarea>
+                    <textarea class="form-message" id="contact-message" name="message"></textarea>
                 </div>
                 <button class="form-btn">Submit</button>
             </form>
+            <p class="contact-success-message-hide" id="contact-success-message">
+                Thank you! Your message has been sent
+            </p>
             <svg class="contact-bg-bottom" viewBox="0 0 435 25">
                 <path d="M435,25C369.274,9,295.479,0,217.5,0C139.521,0,65.725,9,0,25H435z" />
             </svg>
