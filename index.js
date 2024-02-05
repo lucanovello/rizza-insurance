@@ -133,7 +133,7 @@ contactForm.addEventListener('submit', (e) => {
 
     // Get the form data
     const formData = new FormData(contactForm);
-
+    console.dir(contactForm);
     // Send the form data to the server using an XMLHttpRequest
     const xhr = new XMLHttpRequest();
     xhr.open('POST', 'sendmail.php');
